@@ -28,6 +28,9 @@ public class Webconfiguration {
         return webServiceTemplate;
     }
 
+    /****************************************************
+     Converting xml class of soap api to java classes
+     ***************************************************/
     @Bean
     public TransactionClient transactionClient(Jaxb2Marshaller marshaller, WebServiceTemplate webServiceTemplate) {
         TransactionClient client = new TransactionClient();
@@ -39,6 +42,10 @@ public class Webconfiguration {
 
     }
 
+    /****************************************************
+      soap credentials for access customer transaction data
+      ***************************************************/
+
     @Bean
     public Wss4jSecurityInterceptor securityInterceptor() {
         Wss4jSecurityInterceptor security = new Wss4jSecurityInterceptor();
@@ -49,9 +56,6 @@ public class Webconfiguration {
         security.setSecurementMustUnderstand(true);
         return security;
     }
-
-
-
 }
 
 

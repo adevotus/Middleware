@@ -21,11 +21,6 @@ public class TransactionClient extends WebServiceGatewaySupport {
     @Autowired
     private WebServiceTemplate webServiceTemplate;
 
-//    @Autowired
-//    public TransactionClient(WebServiceTemplate webServiceTemplate) {
-//        this.webServiceTemplate = webServiceTemplate;
-//    }
-
     public List<TransactionData> getTransactions(String customerNumber) {
         TransactionsRequest request = new TransactionsRequest();
         log.info("request initiation" + request);

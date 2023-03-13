@@ -26,23 +26,23 @@ public class TransactionController {
     private static final Logger log = LoggerFactory.getLogger(TransactionController.class.getName());
 
     private final TransactionClient transactionClient;
-   // private TransactionsResponse response;
-
-    @Autowired
+     @Autowired
     public TransactionController(TransactionClient transactionClient){
         this.transactionClient=transactionClient;
 
     }
-
-    //mapping from the transaction soap
-    @GetMapping("/{customerNumber}")
-    //@ResponseBody
-    public ResponseEntity<Object> getTransactions(@PathVariable String customerNumber){
-
+    /****************************************************
+     api to get customer transaction detail from core banking system.
+     ***************************************************/
+    @PostMapping("/{customerNumber}")
+     public ResponseEntity<Object> getTransactions(@PathVariable String customerNumber){
         List<TransactionData> transactionData = transactionClient.getTransactions(customerNumber);
         log.info("these are data for" + transactionData );
         return  new ResponseEntity<>(transactionData,HttpStatus.OK);
     }
+
+}
+
 
 
 //    @GetMapping  ("{customerNumber}")
@@ -54,10 +54,3 @@ public class TransactionController {
 //        return new ResponseEntity<>(transactionData,HttpStatus.OK);
 //
 //    }
-
-
-
-
-
-
-}
